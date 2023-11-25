@@ -6,10 +6,6 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour
 {
     private float timeToLive;
-    private void Start()
-    {
-        transform.parent = null;
-    }
 
     // Update is called once per frame
     void Update()
@@ -21,12 +17,12 @@ public class BulletManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
         }
         Destroy(gameObject);
     }
