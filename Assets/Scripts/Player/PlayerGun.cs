@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerGun : MonoBehaviour
 {
+    [SerializeField] private float fireSpeed = 0.7f;
+    private float rechargeTime;
     private Transform player;
     private Camera camera;
     [SerializeField] GameObject bulletPrefab;
@@ -12,6 +14,7 @@ public class PlayerGun : MonoBehaviour
     {
         player = this.transform.parent;
         camera = Camera.main;
+        rechargeTime = fireSpeed;
     }
 
     // Update is called once per frame
@@ -23,10 +26,11 @@ public class PlayerGun : MonoBehaviour
         Vector3 shotDirection = (mousePosition - player.transform.position).normalized;
         this.transform.up = shotDirection;
         //Debug.DrawRay(this.transform.position, shotDirection);
-
-        if (Input.GetMouseButtonDown(0))
+        rechargeTime += Time.deltaTime;
+        if (Input.GetMouseButtonDown(0) && rechargeTime >= fireSpeed)
         {
             Instantiate(bulletPrefab, this.transform.position + shotDirection, this.transform.rotation);
+            rechargeTime = 0;
         }
     }
 }
