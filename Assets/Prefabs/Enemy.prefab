@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 200
-  pauseDuration: 1
+  pauseDuration: 0.47
 --- !u!1 &6775195873304501346
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,4 +422,4 @@ MonoBehaviour:
   minAngle: 0.2
   maxAngle: 0.8
   dashDurations: 1
-  dashCooldown: 1
+  dashCooldown: 0.7
