@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float jumpBufferTime = 0.15f;
     private float _jumpBufferTimer;
-	
-	
+
+    public static PlayerController instance;
 	
 
     void Start()
@@ -34,10 +35,14 @@ public class PlayerController : MonoBehaviour
 		jumpForce = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * jumpHeight);
     }
 
-	
+    private void Awake()
+    {
+	    instance = this;
+    }
+
     void Update()
     {
-		isGrounded = Physics.Raycast(transform.position, -Vector3.up * 0.05f, out hit);
+		//isGrounded = Physics.Raycast(transform.position, -Vector3.up * 0.05f, out hit);
 		
         // Handle player input
         float horizontalInput = Input.GetAxis("Horizontal");
