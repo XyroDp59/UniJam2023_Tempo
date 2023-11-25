@@ -20,7 +20,7 @@ public class PlayerGunOrienter : MonoBehaviour
         mousePosition.z = 0;
         Vector3 currentGunDirection = (this.transform.position - player.transform.position).normalized;
         Vector3 shotDirection = (mousePosition - player.transform.position).normalized;
-        float angle = Vector3.Angle(currentGunDirection, shotDirection);
-        transform.RotateAround(player.position, Vector3.forward, angle);
+        this.transform.up = shotDirection;
+        Debug.DrawRay(player.transform.position, shotDirection, Color.green);
     }
 }
