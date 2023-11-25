@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float jumpBufferTime = 0.15f;
     private float _jumpBufferTimer;
-	
-	
+
+    public static PlayerController instance;
 	
 
     void Start()
@@ -34,11 +35,15 @@ public class PlayerController : MonoBehaviour
 		jumpForce = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * jumpHeight);
     }
 
-	
+    private void Awake()
+    {
+	    instance = this;
+    }
+
     void Update()
     {
-
-
+		//isGrounded = Physics.Raycast(transform.position, -Vector3.up * 0.05f, out hit);
+		
         // Handle player input
         float horizontalInput = Input.GetAxis("Horizontal");
 
@@ -61,12 +66,14 @@ public class PlayerController : MonoBehaviour
 			{
 				Jump(jumpForce);
 				_coyoteTimer = -1f;
+				Debug.Log("Coyote");
 			}
 			
 			else if (!isGrounded && canDoubleJump)
 			{
 				Jump(doubleJumpForce);
 				canDoubleJump = false;
+				Debug.Log("Double Jump");
 			}
 						// ou on active le timer pour le jump buffer
 			else if (!isGrounded)
@@ -81,6 +88,7 @@ public class PlayerController : MonoBehaviour
                 if (_jumpBufferTimer > 0)
                 {
                     Jump(jumpForce);
+					Debug.Log("JumpBuffer");
                 }
 
 
@@ -91,6 +99,7 @@ public class PlayerController : MonoBehaviour
                 _jumpBufferTimer = -1;
 
 				// On decremente les compteurs
+				Debug.Log("grounded");
 				if (_coyoteTimer > -1) _coyoteTimer -= Time.deltaTime;
 				if (_jumpBufferTimer > -1) _jumpBufferTimer -= Time.deltaTime;
             }
@@ -120,11 +129,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+		Debug.Log(collision.gameObject);
         isGrounded = true;
     }
 
-
-
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+		Debug.Log(collision.gameObject);
+        isGrounded = false;
+    }
+	
 
 
 }
