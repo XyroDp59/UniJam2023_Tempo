@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4058652654744419940}
   - component: {fileID: 1614844226114709670}
   - component: {fileID: 3495464037323417071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.000000059604645, y: -0.0015852898}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -107,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3}
+  m_Size: {x: 0.8517163, y: 0.92464423}
   m_EdgeRadius: 0
 --- !u!114 &3495464037323417071
 MonoBehaviour:
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 6610509203942539498}
   - component: {fileID: 3435279865059355190}
   - component: {fileID: 3534933998166539910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 176720385, guid: 1ed1ce9d4ed09a946a6a013133dfdf33, type: 3}
   m_Color: {r: 0, g: 0.20616484, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 3269769767411393107}
   - component: {fileID: 7427218349948335600}
   - component: {fileID: 2757256571831692185}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -1408501501, guid: 066299473ff924545be2e614deb0cc14, type: 3}
   m_Color: {r: 0, g: 1, b: 0.018028736, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 201457758860249768}
   - component: {fileID: 8356926815869397401}
   - component: {fileID: 1953885749899769382}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 733233439, guid: f5ce104ad2cd93b49ad982fff1dacc6e, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
