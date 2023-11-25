@@ -23,32 +23,7 @@ public class PlayerLogic : MonoBehaviour
     public PlayerState CurrentState;
     
     
-    private float _breath;
-    [SerializeField] private float breathCapacity;
-    [SerializeField] private int breathNum;
-    public Text breathText;
-    public float Breath
-    { 
-        get {
-            return _breath;
-        }
-        set
-        {
-            _breath = Mathf.Clamp(value, 0, BreathDuration);
-            breathText.text = "Breath : "  + Mathf.RoundToInt(_breath).ToString() + "/" + BreathDuration.ToString();
-            if (_breath == 0) SoftGameOver();
-        }
-    }
-    public float BreathDuration
-    {
-        get {
-            return breathCapacity * breathNum;
-        }
-        set
-        {
-            breathNum = (int)value;
-        }
-    }
+   
 
     
     private float _health;
@@ -63,7 +38,7 @@ public class PlayerLogic : MonoBehaviour
         set
         {
             _health = Mathf.Clamp(value, 0, maxHealth);
-            healthText.text = "Ectoplasm : "  + Mathf.RoundToInt(_health).ToString() + "/" + maxHealth.ToString();
+            //healthText.text = "Ectoplasm : "  + Mathf.RoundToInt(_health).ToString() + "/" + maxHealth.ToString();
             if (_health == 0) GameOver();
         }
     }
@@ -91,14 +66,9 @@ public class PlayerLogic : MonoBehaviour
     
     private void Awake()
     {
-        Breath = BreathDuration;
         Health = maxHealth;
         Movement = GetComponent<PlayerMovement>();
         CurrentState = PlayerState.Default;
     }
 
-    private void FixedUpdate()
-    {
-        Breath -= Time.deltaTime;
-    }
 }
