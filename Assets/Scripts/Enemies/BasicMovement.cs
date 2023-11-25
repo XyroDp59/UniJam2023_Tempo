@@ -12,7 +12,7 @@ public class BasicMovement : MonoBehaviour
     void Start()
     {
         target = PlayerController.instance.transform;
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponentInParent<Rigidbody2D>();
         StartCoroutine(Bouge());
     }
 

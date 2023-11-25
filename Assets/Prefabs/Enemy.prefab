@@ -52,7 +52,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -63,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1614844226114709670
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6610509203942539498}
   - component: {fileID: 3435279865059355190}
+  - component: {fileID: 3534933998166539910}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Untagged
@@ -205,6 +206,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3534933998166539910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788618916379177695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e30255fd882824198582077fa4a21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 200
+  pauseDuration: 1
 --- !u!1 &6775195873304501346
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3269769767411393107}
   - component: {fileID: 7427218349948335600}
+  - component: {fileID: 2757256571831692185}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -289,6 +306,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2757256571831692185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775195873304501346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22426e8fbf1e14ce3afa4106d4219360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 200
 --- !u!1 &8306132108657190067
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201457758860249768}
   - component: {fileID: 8356926815869397401}
+  - component: {fileID: 1953885749899769382}
   m_Layer: 0
   m_Name: Red
   m_TagString: Untagged
@@ -373,3 +404,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1953885749899769382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8306132108657190067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6257fc76758712a4ca1a0dd4c2695183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 200
+  pauseDuration: 5
+  minAngle: 0.2
+  maxAngle: 0.8
+  dashDurations: 1
+  dashCooldown: 1
