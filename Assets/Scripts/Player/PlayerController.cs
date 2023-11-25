@@ -5,18 +5,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
 	[SerializeField] private float jumpHeight = 5f;
-    public float jumpForce;
-    public float doubleJumpForce = 7f;
-    public float dashSpeed = 10f;
-    public float dashDuration = 0.5f;
+    private float jumpForce;
+    [SerializeField] private float doubleJumpForce = 7f;
+    [SerializeField] private float dashSpeed = 10f;
+    [SerializeField] private float dashDuration = 0.5f;
 
     private bool isGrounded;
     private bool canDoubleJump;
     private bool isDashing;
 
     private Rigidbody2D rb;
+	
+	
+	[SerializeField] private float coyoteTime = 0.05f;
+    private float _coyoteTimer;
+
+    [SerializeField] private float jumpBufferTime = 0.15f;
+    private float _jumpBufferTimer;
+	
+	
+	
 
     void Start()
     {
@@ -24,15 +34,10 @@ public class PlayerController : MonoBehaviour
 		jumpForce = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * jumpHeight);
     }
 
+	
     void Update()
     {
 
-        // Reset double jump ability when grounded
-        if (isGrounded)
-        {
-            canDoubleJump = true;
-            isDashing = false;
-        }
 
         // Handle player input
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -50,15 +55,46 @@ public class PlayerController : MonoBehaviour
         // Jump input
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isGrounded)
+			
+			// Jump pendant le coyoteTime
+			if (_coyoteTimer >= 0f)
+			{
+				Jump(jumpForce);
+				_coyoteTimer = -1f;
+			}
+			
+			else if (!isGrounded && canDoubleJump)
+			{
+				Jump(doubleJumpForce);
+				canDoubleJump = false;
+			}
+						// ou on active le timer pour le jump buffer
+			else if (!isGrounded)
+			{
+				_jumpBufferTimer = jumpBufferTime;
+			}
+			
+			
+			if (isGrounded)
             {
-                Jump(jumpForce);
+                //Si le joueur touche le sol alors qu'il avait pr�vu de sauter via un jump buffer, alors il saute
+                if (_jumpBufferTimer > 0)
+                {
+                    Jump(jumpForce);
+                }
+
+
+                //Le joueur �tant au sol, on remets a jour les variables de mouvements
+                _coyoteTimer = coyoteTime;
+				canDoubleJump = true;
+				isDashing = false;
+                _jumpBufferTimer = -1;
+
+				// On decremente les compteurs
+				if (_coyoteTimer > -1) _coyoteTimer -= Time.deltaTime;
+				if (_jumpBufferTimer > -1) _jumpBufferTimer -= Time.deltaTime;
             }
-            else if (canDoubleJump)
-            {
-                Jump(doubleJumpForce);
-                canDoubleJump = false;
-            }
+
         }
     }
 
@@ -82,10 +118,11 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true;
     }
+
 
 
 
