@@ -215,7 +215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
       propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -598,9 +598,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2990365228089730716, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990365228089730716, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4192733666148205705, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6423992884295898122, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
       propertyPath: m_Name
