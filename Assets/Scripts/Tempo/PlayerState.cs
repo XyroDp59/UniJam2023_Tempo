@@ -17,6 +17,9 @@ public class PlayerState : MonoBehaviour
         for(int i = 0; i <=2 ; i++) stateObjectList.Add(transform.GetChild(i).gameObject);
     }
 
+	void Start(){
+		SoundManager.Instance.SetMusicSource(Music0);
+		}
 
 	public void UpdatePlayerState()
 	{
