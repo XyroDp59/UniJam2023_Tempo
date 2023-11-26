@@ -12,16 +12,16 @@ public class MineManager : MonoBehaviour
         active = false;
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(transform.up * speed);
-        Debug.Log(rb.velocity);
+        //Debug.Log(rb.velocity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy") && active)
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-            return;
+           //Destroy(collision.gameObject);
+           //Destroy(gameObject);
+           //return;
         }else if (collision.gameObject.CompareTag("Enemy"))
         {
            // Vector2 awayDirection = collision.transform.position - this.transform.position;
@@ -40,8 +40,8 @@ public class MineManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && active)
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            //Destroy(collision.gameObject);
+            //Destroy(gameObject);
         }
     }
 
@@ -50,10 +50,17 @@ public class MineManager : MonoBehaviour
         GetComponent<CircleCollider2D>().isTrigger = true;
         rb.velocity = Vector3.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
+        //active = true;
     }
 
     private void OnDestroy()
     {
         PlayerLauncher.instance.BulletList.Remove(this.gameObject);
+    }
+
+    public void Explode()
+    {
+        Destroy(gameObject);
+        return;
     }
 }
