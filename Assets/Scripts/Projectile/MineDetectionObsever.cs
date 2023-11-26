@@ -44,7 +44,6 @@ public class MineDetectionObsever : MonoBehaviour
         }
         
         transform.parent.GetComponent<MineManager>().Explode();
-        Destroy(gameObject);
     }
 
 }

@@ -218,6 +218,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
+      propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
+      propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
       propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2036483389}
@@ -225,6 +233,14 @@ PrefabInstance:
       propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 297336262}
+    - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
+      propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1113759967}
+    - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
+      propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
       propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdatePlayerState
@@ -234,12 +250,24 @@ PrefabInstance:
       value: UpdateStateEnemies
       objectReference: {fileID: 0}
     - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
+      propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ActivateBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
       propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerState, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
       propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: SpawnManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
+      propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: PlayerLauncher, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046196730087643410, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
+      propertyPath: onTimeUp.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8607999919402952081, guid: 9f91554ffd5fae0498754144ed84718d, type: 3}
       propertyPath: m_Name
@@ -546,9 +574,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 230762160659920081, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
+    - target: {fileID: 100635859369418609, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230762160659920081, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 625794701448972353, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
       propertyPath: m_IsActive
@@ -618,10 +650,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4057981142078073214, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 230762160659920081, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1113759967}
   m_SourcePrefab: {fileID: 100100000, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
 --- !u!1 &880179081
 GameObject:
@@ -729,6 +765,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb383b599eac9694c88e948c4eb7ca31, type: 3}
+--- !u!1 &1113759964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 230762160659920081, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
+  m_PrefabInstance: {fileID: 802927084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1113759967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113759964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c061afbb369590148881b6c279d931f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSpeed: 1
+  bulletPrefab: {fileID: 8063756402958971116, guid: 8d838a40d6ad9864c8308e08f4859454, type: 3}
+  BulletList: []
 --- !u!1 &1265128999
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,7 +3091,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1407157047}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 631617a95f2c20b47afd77a6110ef533, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3379,7 +3435,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.10723141, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3390,7 +3446,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0798976, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1980542539
 Transform:
