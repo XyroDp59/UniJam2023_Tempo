@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class QuitButton : MonoBehaviour
 {
-    [SerializeField] private AudioClip MusicTitle;
     public void QuitGame()
     {
         Application.Quit();

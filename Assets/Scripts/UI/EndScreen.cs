@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EndScreen : MonoBehaviour
 {
+    [SerializeField] private AudioClip MusicTitle;
     private Animator anim;
     public GameObject parent;
 
     private void Start()
     {
+        SoundManager.Instance.SetMusicSource(MusicTitle);
         StartCoroutine(Wait(0.66f));
         anim = GetComponent<Animator>();
         anim.Play("GameOverAnimation");

@@ -585,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17b03a5dfa752347bcdc86b6d1e73e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicTitle: {fileID: 8300000, guid: d7bc8d3f644b5e748b3c4021c2cb03a9, type: 3}
   parent: {fileID: 0}
 --- !u!1 &1031870139
 GameObject:
@@ -799,7 +800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a603c6b1d259f40a3bb7740ac2f192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicTitle: {fileID: 0}
 --- !u!1 &2034212601
 GameObject:
   m_ObjectHideFlags: 0
