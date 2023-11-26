@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MineManager : MonoBehaviour
@@ -6,7 +7,6 @@ public class MineManager : MonoBehaviour
     private Rigidbody2D rb;
     public bool active = false;
     public int knockback;
-
     private void Start()
     {
         active = false;
@@ -50,6 +50,10 @@ public class MineManager : MonoBehaviour
         GetComponent<CircleCollider2D>().isTrigger = true;
         rb.velocity = Vector3.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
-        active = true;
+    }
+
+    private void OnDestroy()
+    {
+        //Player
     }
 }
