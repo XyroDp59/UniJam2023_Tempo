@@ -51,6 +51,7 @@ public class PlayerLauncher : MonoBehaviour
         foreach(GameObject bullet in BulletList)
         {
             bullet.GetComponent<MineManager>().active = true;
+            bullet.GetComponent<Animator>().SetTrigger("Active");
         }
     }
 }

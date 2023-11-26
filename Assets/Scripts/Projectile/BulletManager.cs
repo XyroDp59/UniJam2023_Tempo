@@ -22,7 +22,7 @@ public class BulletManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            collision.GetComponent<EnemyState>().Die();
             Destroy(gameObject);
         }
     }

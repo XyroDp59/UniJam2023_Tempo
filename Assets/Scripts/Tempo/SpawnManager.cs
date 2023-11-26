@@ -89,7 +89,7 @@ public class SpawnManager : MonoBehaviour
 		for (int i = 0; i <=2; i++)
 			if (i != actualState) PossibleStates.Add(i);
 		
-		int newState = PossibleStates[Random.RandomRange(0,2)];
+		int newState = PossibleStates[Random.Range(0,2)];
 		
 		foreach(GameObject enemy in EnemyList){
 			enemy.GetComponent<EnemyState>().SetState(newState);

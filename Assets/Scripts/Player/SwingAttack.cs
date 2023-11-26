@@ -8,7 +8,7 @@ public class SwingAttack : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<EnemyState>().Die();
         }
     }
 }

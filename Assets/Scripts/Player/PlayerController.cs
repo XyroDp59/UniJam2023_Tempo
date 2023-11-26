@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 	private Animator animator;
 	private SpriteRenderer sprite;
-	
 
 	private int healthPoint;
 	private float immunityTimer;
@@ -42,10 +41,8 @@ public class PlayerController : MonoBehaviour
 	const string PLAYER_LAND = "Player_Landing";
 	private bool _haslanded = true;
 	private string currentState;
-	
-	[SerializeField] private List<AudioClip> jumpSoundList = new List<AudioClip>();
-	[SerializeField] private AudioClip hitSound;
-	[SerializeField] private float volume = 8f;
+
+
 	
 
     void Start()
@@ -147,15 +144,17 @@ public class PlayerController : MonoBehaviour
                 //Le joueur �tant au sol, on remets a jour les variables de mouvements
 				canDoubleJump = true;
 				isDashing = false;
-                _jumpBufferTimer = -1;				
+                _jumpBufferTimer = -1;
+
+				
             }
+
         }
     }
 
     void Jump(float jumpForce)
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-		SoundManager.Instance.PlaySoundInList(jumpSoundList, volume);
     }
 
     IEnumerator Dash()
@@ -189,9 +188,7 @@ public class PlayerController : MonoBehaviour
 		{
 			healthPoint -= 1;
 			immunityTimer = immunityTime;
-			SoundManager.Instance.PlaySound(hitSound, volume);
-
-			Destroy(other.gameObject);
+			other.gameObject.GetComponent<EnemyState>().Die();
 			if (healthPoint == 0)
 			{
 				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

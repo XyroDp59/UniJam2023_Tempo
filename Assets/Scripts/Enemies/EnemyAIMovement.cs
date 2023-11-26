@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 namespace Enemies
 {
-    public class EnemyAIMovement : MonoBehaviour
+    public class EnemyAIMovement : MoveBehaviour
     {
         private Transform player;
         private NavMeshAgent agent;

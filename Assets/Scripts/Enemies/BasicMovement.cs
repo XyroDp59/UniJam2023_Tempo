@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BasicMovement : MonoBehaviour
+public class BasicMovement : MoveBehaviour
 {
 
     public Transform target;
@@ -24,5 +24,10 @@ public class BasicMovement : MonoBehaviour
         rb.AddForce(vecteur * speed);
         yield return new WaitForSeconds(pauseDuration);
         StartCoroutine(Bouge());
+    }
+
+    public void Destroy()
+    {
+        transform.parent.GetComponent<EnemyState>().Destroy();
     }
 }
