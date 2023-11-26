@@ -10,6 +10,7 @@ public class PlayerLauncher : MonoBehaviour
     private Camera camera;
     [SerializeField] GameObject bulletPrefab;
     public List<GameObject> BulletList = new List<GameObject>();
+    public static PlayerLauncher instance;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,14 @@ public class PlayerLauncher : MonoBehaviour
         rechargeTime = fireSpeed;
     }
 
+    void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(gameObject);    // Suppression d'une instance pr�c�dente (s�curit�...s�curit�...)
+
+        instance = this;
+    }
+    
     // Update is called once per frame
     void Update()
     {

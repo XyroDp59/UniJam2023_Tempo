@@ -7,23 +7,31 @@ public class PlayerSword : MonoBehaviour
     [SerializeField] private float attackSpeed = 0.5f;
     private float attackTiming = 0.2f;
     private float rechargeTime;
-
+	private GameObject swingObj;
+	private Animator animSwing;
     private bool swinging;
   
+	void Start(){
+		swingObj = gameObject.transform.GetChild(0).gameObject;
+		animSwing = swingObj.GetComponent<Animator>();
+	}
+	
     void Update()
     {
         rechargeTime += Time.deltaTime;
       
         if (Input.GetMouseButton(0) && rechargeTime >= attackSpeed)
         {
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            swingObj.SetActive(true);
             rechargeTime = 0;
             swinging = true;
         }
+		if (swinging) animSwing.Play("SwordSlash");
+
 
         if (rechargeTime >= attackTiming && swinging)
         {
-            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            swingObj.SetActive(false);
             swinging = false;
         }
     }

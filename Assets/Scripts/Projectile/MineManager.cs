@@ -54,6 +54,6 @@ public class MineManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        //Player
+        PlayerLauncher.instance.BulletList.Remove(this.gameObject);
     }
 }
