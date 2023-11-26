@@ -95,7 +95,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8063756402958971116, guid: 8d838a40d6ad9864c8308e08f4859454, type: 3}
   sound:
   - {fileID: 8300000, guid: e9a707600fab2a24fab317402e416b05, type: 3}
-  volume: 10
+  volume: 8
 --- !u!212 &1769867902650499239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0e2327d18ec3e764bb1273a6c03c4172, type: 3}
   - {fileID: 8300000, guid: aa8da8f481680194db89620155abdbb8, type: 3}
   - {fileID: 8300000, guid: 45937ab5dc15bc8468a930afc676b35e, type: 3}
-  volume: 15
+  volume: 8
 --- !u!212 &3580163067354091529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -606,7 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 0.5
   sound: {fileID: 8300000, guid: 7d8f372080481fe4a8a160dcb6182f1e, type: 3}
-  volume: 10
+  volume: 8
 --- !u!1 &5365436928662281116
 GameObject:
   m_ObjectHideFlags: 0

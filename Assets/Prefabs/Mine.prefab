@@ -299,4 +299,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 13c7b820f4115d04dba39a15faece971, type: 3}
-  volume: 50
+  volume: 30
