@@ -24,9 +24,9 @@ public class MineManager : MonoBehaviour
             return;
         }else if (collision.gameObject.CompareTag("Enemy"))
         {
-            Vector2 awayDirection = collision.transform.position - this.transform.position;
-            awayDirection = awayDirection.normalized;
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(awayDirection * knockback, ForceMode2D.Impulse);
+           // Vector2 awayDirection = collision.transform.position - this.transform.position;
+            //awayDirection = awayDirection.normalized;
+            //collision.gameObject.GetComponent<Rigidbody2D>().AddForce(awayDirection * knockback, ForceMode2D.Impulse);
 
         }
 
