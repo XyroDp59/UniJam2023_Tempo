@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     private bool isDashing;
 
     private Rigidbody2D rb;
+	private Animator animator;
+	private SpriteRenderer sprite;
+
 	
 	
 	[SerializeField] private float coyoteTime = 0.05f;
@@ -28,11 +31,26 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 	
+	
+	const string PLAYER_IDLE = "Player_Idle";
+    const string PLAYER_WALK = "Player_Walk";
+    const string PLAYER_AIR = "Player_InAir";
+	const string PLAYER_LAND = "Player_Landing";
+	private bool _haslanded = true;
+	private string currentState;
+
+
+	
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
+		sprite = GetComponent<SpriteRenderer>();
+		
 		jumpForce = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * jumpHeight);
+		currentState = PLAYER_IDLE;
+
     }
 
     private void Awake()
@@ -69,11 +87,23 @@ public class PlayerController : MonoBehaviour
         // Move the player horizontally
         Vector3 movement = new Vector3(horizontalInput * moveSpeed, rb.velocity.y);
         rb.velocity = movement;
+		
+		if(Vector2.Distance(rb.velocity, Vector2.zero) <= 0.1)
+			sprite.flipX = (horizontalInput < 0);
 
         if (isGrounded)
         {
 	        _coyoteTimer = coyoteTime;
-        }
+			
+			if(_haslanded){
+				if(Vector2.Distance(rb.velocity, Vector2.zero) <= 0.1) changeAnimationState(PLAYER_IDLE);
+				else changeAnimationState(PLAYER_WALK);
+			} else {
+				changeAnimationState(PLAYER_LAND);
+				_haslanded = true;
+			}
+        } 
+		else changeAnimationState(PLAYER_AIR);
         
         // Jump input
         if (Input.GetKeyDown(KeyCode.Space))
@@ -136,6 +166,14 @@ public class PlayerController : MonoBehaviour
         }
 
         isDashing = false;
+    }
+	
+	
+	private void changeAnimationState(string newState)
+    {
+        if (currentState == newState) return;
+        animator.Play(newState);
+        currentState = newState;
     }
 
 
