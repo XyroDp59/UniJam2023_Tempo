@@ -6,6 +6,7 @@ public class EnemyState : MonoBehaviour
 {
 	private List<GameObject> stateObjectList = new List<GameObject>();
 	private int currentState; // 0 = R ; 1 = V ; 2 = B
+	public bool isDying = false;
 	
     // Start is called before the first frame update
     void Awake()
@@ -27,8 +28,9 @@ public class EnemyState : MonoBehaviour
 		transform.GetChild(currentState).GetComponent<Animator>().SetTrigger("DCD");
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         GetComponent<Rigidbody2D>().isKinematic = true;
-       // transform.GetChild(currentState).GetComponent
-    }
+        isDying = true;
+        // transform.GetChild(currentState).GetComponent
+	}
 
     public void Destroy()
     {
