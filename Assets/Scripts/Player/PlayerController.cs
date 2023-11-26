@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private float volume = 8f;
 
+    private UIManager uIManager;
+
 
     void Start()
     {
@@ -56,6 +58,9 @@ public class PlayerController : MonoBehaviour
 		jumpForce = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * jumpHeight);
 		currentState = PLAYER_IDLE;
 		immunityTimer = 0f;
+
+		uIManager = UIManager.Instance;
+		uIManager.InitializeHealth(healthPoint);
     }
 
     private void Awake()
@@ -152,6 +157,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+        uIManager.UpdateHealth(healthPoint);
     }
 
     void Jump(float jumpForce)
