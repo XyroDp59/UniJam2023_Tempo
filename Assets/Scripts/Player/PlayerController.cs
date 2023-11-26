@@ -42,8 +42,10 @@ public class PlayerController : MonoBehaviour
 	private bool _haslanded = true;
 	private string currentState;
 
+    [SerializeField] private List<AudioClip> jumpSoundList = new List<AudioClip>();
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private float volume = 8f;
 
-	
 
     void Start()
     {
@@ -155,6 +157,8 @@ public class PlayerController : MonoBehaviour
     void Jump(float jumpForce)
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        SoundManager.Instance.PlaySoundInList(jumpSoundList, volume);
+
     }
 
     IEnumerator Dash()
@@ -188,7 +192,9 @@ public class PlayerController : MonoBehaviour
 		{
 			healthPoint -= 1;
 			immunityTimer = immunityTime;
-			other.gameObject.GetComponent<EnemyState>().Die();
+            SoundManager.Instance.PlaySound(hitSound, volume);
+
+            other.gameObject.GetComponent<EnemyState>().Die();
 			if (healthPoint == 0)
 			{
 				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
