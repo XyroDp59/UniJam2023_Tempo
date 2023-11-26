@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     private bool isDashing;
 
     private Rigidbody2D rb;
+	private Animator animator;
+	private SpriteRenderer sprite;
+
 	
 	
 	[SerializeField] private float coyoteTime = 0.05f;
@@ -28,11 +31,26 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 	
+	
+	const string PLAYER_IDLE = "Player_Idle";
+    const string PLAYER_WALK = "Player_Walk";
+    const string PLAYER_AIR = "Player_InAir";
+	const string PLAYER_LAND = "Player_Landing";
+	private bool _haslanded = true;
+	private string currentState;
+
+
+	
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
+		sprite = GetComponent<SpriteRenderer>();
+		
 		jumpForce = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * jumpHeight);
+		currentState = PLAYER_IDLE;
+
     }
 
     private void Awake()
@@ -42,8 +60,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-		//isGrounded = Physics.Raycast(transform.position, -Vector3.up * 0.05f, out hit);
-		
+	    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 2.5f, LayerMask.GetMask("Ground"));
+	    if (hit.collider != null)
+	    {
+		    isGrounded = true;
+		    _coyoteTimer = coyoteTime;
+	    }
+	    else
+	    {
+		    isGrounded = false;
+	    }
+	    
+		// On decremente les compteurs
+	    if (_jumpBufferTimer > -1) _jumpBufferTimer -= Time.deltaTime;
+	    if (_coyoteTimer > -1) _coyoteTimer -= Time.deltaTime;
+	    
         // Handle player input
         float horizontalInput = Input.GetAxis("Horizontal");
 
@@ -56,7 +87,24 @@ public class PlayerController : MonoBehaviour
         // Move the player horizontally
         Vector3 movement = new Vector3(horizontalInput * moveSpeed, rb.velocity.y);
         rb.velocity = movement;
+		
+		if(Vector2.Distance(rb.velocity, Vector2.zero) <= 0.1)
+			sprite.flipX = (horizontalInput < 0);
 
+        if (isGrounded)
+        {
+	        _coyoteTimer = coyoteTime;
+			
+			if(_haslanded){
+				if(Vector2.Distance(rb.velocity, Vector2.zero) <= 0.1) changeAnimationState(PLAYER_IDLE);
+				else changeAnimationState(PLAYER_WALK);
+			} else {
+				changeAnimationState(PLAYER_LAND);
+				_haslanded = true;
+			}
+        } 
+		else changeAnimationState(PLAYER_AIR);
+        
         // Jump input
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -66,14 +114,12 @@ public class PlayerController : MonoBehaviour
 			{
 				Jump(jumpForce);
 				_coyoteTimer = -1f;
-				Debug.Log("Coyote");
 			}
 			
 			else if (!isGrounded && canDoubleJump)
 			{
 				Jump(doubleJumpForce);
 				canDoubleJump = false;
-				Debug.Log("Double Jump");
 			}
 						// ou on active le timer pour le jump buffer
 			else if (!isGrounded)
@@ -87,21 +133,16 @@ public class PlayerController : MonoBehaviour
                 //Si le joueur touche le sol alors qu'il avait pr�vu de sauter via un jump buffer, alors il saute
                 if (_jumpBufferTimer > 0)
                 {
-                    Jump(jumpForce);
-					Debug.Log("JumpBuffer");
+                   Jump(jumpForce);
                 }
 
 
                 //Le joueur �tant au sol, on remets a jour les variables de mouvements
-                _coyoteTimer = coyoteTime;
 				canDoubleJump = true;
 				isDashing = false;
                 _jumpBufferTimer = -1;
 
-				// On decremente les compteurs
-				Debug.Log("grounded");
-				if (_coyoteTimer > -1) _coyoteTimer -= Time.deltaTime;
-				if (_jumpBufferTimer > -1) _jumpBufferTimer -= Time.deltaTime;
+				
             }
 
         }
@@ -126,19 +167,14 @@ public class PlayerController : MonoBehaviour
 
         isDashing = false;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-		Debug.Log(collision.gameObject);
-        isGrounded = true;
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-		Debug.Log(collision.gameObject);
-        isGrounded = false;
-    }
 	
+	
+	private void changeAnimationState(string newState)
+    {
+        if (currentState == newState) return;
+        animator.Play(newState);
+        currentState = newState;
+    }
 
 
 }
