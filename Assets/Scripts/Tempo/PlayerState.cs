@@ -8,6 +8,9 @@ public class PlayerState : MonoBehaviour
 	private List<GameObject> newStateObjectList = new List<GameObject>();
 	private int currentState; // 0 = R ; 1 = V ; 2 = B
 	
+	[SerializeField] private AudioClip Music1, Music2, Music0;
+	
+	
     // Start is called before the first frame update
     void Awake()
     {
@@ -24,6 +27,22 @@ public class PlayerState : MonoBehaviour
 		int newState = PossibleStates[Random.RandomRange(0,2)];
 		SetState(newState);
 		currentState = newState;
+		
+		switch(currentState) 
+		{
+		  case 0:
+			SoundManager.Instance.SetMusicSource(Music0);
+			break;
+		  case 1:
+			SoundManager.Instance.SetMusicSource(Music1);
+			break;
+		  case 2:
+			SoundManager.Instance.SetMusicSource(Music2);
+			break;
+		  default:
+			SoundManager.Instance.SetMusicSource(Music0);
+			break;
+		}
 	}
 
 

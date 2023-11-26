@@ -93,6 +93,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpeed: 2
   bulletPrefab: {fileID: 8063756402958971116, guid: 8d838a40d6ad9864c8308e08f4859454, type: 3}
+  sound:
+  - {fileID: 8300000, guid: e9a707600fab2a24fab317402e416b05, type: 3}
+  volume: 10
 --- !u!212 &1769867902650499239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -361,6 +364,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpeed: 0.4
   bulletPrefab: {fileID: 4429928292521031546, guid: 60ba615910e2f4838af456e087d9501c, type: 3}
+  sound:
+  - {fileID: 8300000, guid: fddf7bd295d478546b9427db5fc7e9cf, type: 3}
+  - {fileID: 8300000, guid: 0e2327d18ec3e764bb1273a6c03c4172, type: 3}
+  - {fileID: 8300000, guid: aa8da8f481680194db89620155abdbb8, type: 3}
+  - {fileID: 8300000, guid: 45937ab5dc15bc8468a930afc676b35e, type: 3}
+  volume: 15
 --- !u!212 &3580163067354091529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -596,6 +605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 0.5
+  sound: {fileID: 8300000, guid: 7d8f372080481fe4a8a160dcb6182f1e, type: 3}
+  volume: 10
 --- !u!1 &5365436928662281116
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +803,11 @@ MonoBehaviour:
   immunityTime: 1
   coyoteTime: 0.05
   jumpBufferTime: 0.15
+  jumpSoundList:
+  - {fileID: 8300000, guid: 33cf13f7bcc76734aa0086abf37ebfab, type: 3}
+  - {fileID: 8300000, guid: eedc32f78713ed941aa75bbca9d504f0, type: 3}
+  hitSound: {fileID: 8300000, guid: 10c263df9bdb71e49b1791d80d989c0d, type: 3}
+  volume: 8
 --- !u!50 &3157680229132218571
 Rigidbody2D:
   serializedVersion: 4
@@ -866,6 +882,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a833ab40e376b464bba0362007cb6858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Music1: {fileID: 8300000, guid: b0a847e1f07bd134b9122d2bf8fcdcdb, type: 3}
+  Music2: {fileID: 8300000, guid: cfd7b4c8d0c9e074a8f751debc3283f9, type: 3}
+  Music0: {fileID: 8300000, guid: b3853808430c4244c981c58904911577, type: 3}
 --- !u!95 &8343199576956542787
 Animator:
   serializedVersion: 5
