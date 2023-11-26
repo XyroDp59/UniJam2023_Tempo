@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyState : MonoBehaviour
 {
 	private List<GameObject> stateObjectList = new List<GameObject>();
-	private List<GameObject> newStateObjectList = new List<GameObject>();
 	private int currentState; // 0 = R ; 1 = V ; 2 = B
 	
     // Start is called before the first frame update
@@ -22,9 +21,14 @@ public class EnemyState : MonoBehaviour
 			
 		currentState = state;
 	}
+	public void Die()
+	{
+        SpawnManager.instance.EnemyList.Remove(gameObject);
+		transform.GetChild(currentState).GetComponent<Animator>().SetTrigger("DCD");
+    }
 
-    private void OnDestroy()
+    public void Destroy()
     {
-		SpawnManager.instance.EnemyList.Remove(this.gameObject);
+		Destroy(gameObject);
     }
 }
