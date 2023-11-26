@@ -51,6 +51,10 @@ public class SoundManager : MonoBehaviour
         musicSource.clip = music;
         SetMusicActive(true);
     }
+	
+	    //Play a clip at volumeScale
+
+	
 
     //Play or stop the music when in menus
     public void SetMusicActive(bool Active)

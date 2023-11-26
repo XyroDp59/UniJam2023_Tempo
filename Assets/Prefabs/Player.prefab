@@ -888,7 +888,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 33cf13f7bcc76734aa0086abf37ebfab, type: 3}
   - {fileID: 8300000, guid: eedc32f78713ed941aa75bbca9d504f0, type: 3}
   hitSound: {fileID: 8300000, guid: 10c263df9bdb71e49b1791d80d989c0d, type: 3}
-  volume: 8
+  volume: 50
 --- !u!50 &3157680229132218571
 Rigidbody2D:
   serializedVersion: 4
