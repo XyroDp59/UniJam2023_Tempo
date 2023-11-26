@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MineManager : MonoBehaviour
 {
+    public GameObject explosion;
     public float speed;
     private Rigidbody2D rb;
     public bool active = false;
@@ -37,6 +38,8 @@ public class MineManager : MonoBehaviour
 
     public void Explode()
     {
+        GameObject go = Instantiate(explosion);
+        go.transform.position = transform.position;
         Destroy(gameObject);
         return;
     }
