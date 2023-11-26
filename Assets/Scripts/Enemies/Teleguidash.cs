@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Teleguidash : MonoBehaviour
+public class Teleguidash : MoveBehaviour
 {
 
     public Transform target;
@@ -38,6 +38,11 @@ public class Teleguidash : MonoBehaviour
         rb.AddForce(direction * speed);
         yield return new WaitForSeconds(dashDurations);
         StartCoroutine(BougeBien());
+    }
+
+    public void Destroy()
+    {
+        transform.parent.GetComponent<EnemyState>().Destroy();
     }
 
 }

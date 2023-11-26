@@ -11,7 +11,6 @@ public class MineDetectionObsever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         colliderTrigger = GetComponent<CircleCollider2D>();
     }
 
@@ -26,7 +25,6 @@ public class MineDetectionObsever : MonoBehaviour
         {
             colliderTrigger.radius *= 1.2f;
             isTrigger = true;
-            Debug.Log("caca pipi");
             StartCoroutine(Peter());
         }
 
@@ -38,7 +36,7 @@ public class MineDetectionObsever : MonoBehaviour
         Collider2D[] lstBolosse = Physics2D.OverlapCircleAll(transform.position, colliderTrigger.radius,LayerMask.GetMask("Enemy"));
         foreach (Collider2D item in lstBolosse)
         {
-            Destroy(item.gameObject);
+            item.GetComponent<EnemyState>().Die();
         }
         
         transform.parent.GetComponent<MineManager>().Explode();

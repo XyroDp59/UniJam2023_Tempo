@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class EnemyDirectMovement : MonoBehaviour
+    public class EnemyDirectMovement : MoveBehaviour
     {
         private Transform player;
         private Rigidbody2D rb;
@@ -20,6 +20,11 @@ namespace Enemies
             Vector3 directionToPlayer = (player.transform.position - this.transform.position).normalized;
             rb.AddForce(Time.deltaTime * speed * directionToPlayer);
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, 2f);
+        }
+
+        public void Destroy()
+        {
+            transform.parent.GetComponent<EnemyState>().Destroy();
         }
     }
 }

@@ -188,7 +188,7 @@ public class PlayerController : MonoBehaviour
 		{
 			healthPoint -= 1;
 			immunityTimer = immunityTime;
-			Destroy(other.gameObject);
+			other.gameObject.GetComponent<EnemyState>().Die();
 			if (healthPoint == 0)
 			{
 				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

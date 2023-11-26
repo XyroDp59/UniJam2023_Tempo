@@ -14,7 +14,7 @@ public class EnemyState : MonoBehaviour
     }
 
 	public void SetState(int state){
-		Debug.Log(state);
+		//Debug.Log(state);
 		for(int i = 0; i<=2;i++)
 			if(i == state)transform.GetChild(i).gameObject.SetActive(true);
 			else transform.GetChild(i).gameObject.SetActive(false);
@@ -22,13 +22,16 @@ public class EnemyState : MonoBehaviour
 		currentState = state;
 	}
 	public void Die()
-	{
-        SpawnManager.instance.EnemyList.Remove(gameObject);
+	{	
+        SpawnManager.instance.EnemyList.Remove(this.gameObject);
 		transform.GetChild(currentState).GetComponent<Animator>().SetTrigger("DCD");
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        GetComponent<Rigidbody2D>().isKinematic = true;
+       // transform.GetChild(currentState).GetComponent
     }
 
     public void Destroy()
     {
-		Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
