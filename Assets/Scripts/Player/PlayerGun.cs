@@ -12,7 +12,7 @@ public class PlayerGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = this.transform.parent;
+        player = transform.parent;
         camera = Camera.main;
         rechargeTime = fireSpeed;
     }
@@ -22,8 +22,11 @@ public class PlayerGun : MonoBehaviour
     {
         Vector3 mousePosition = camera.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
-        Vector3 currentGunDirection = (this.transform.position - player.transform.position).normalized;
+        Vector3 currentGunDirection = (transform.position - player.transform.position).normalized;
         Vector3 shotDirection = (mousePosition - player.transform.position).normalized;
+        Debug.Log(shotDirection);
+        if (shotDirection.x > 0) transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = true;
+        else transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = false;
         this.transform.up = shotDirection;
         //Debug.DrawRay(this.transform.position, shotDirection);
         rechargeTime += Time.deltaTime;
