@@ -183,23 +183,18 @@ public class PlayerController : MonoBehaviour
         animator.Play(newState);
         currentState = newState;
     }
-	
-    
 
-	private void OnCollisionEnter2D(Collision2D other)
+	public void takeDamage()
 	{
-		if (other.gameObject.CompareTag("Enemy") && immunityTimer < 0)
-		{
-			healthPoint -= 1;
-			immunityTimer = immunityTime;
-            SoundManager.Instance.PlaySound(hitSound, volume);
+        healthPoint -= 1;
+        immunityTimer = immunityTime;
+        SoundManager.Instance.PlaySound(hitSound, volume);
 
-            other.gameObject.GetComponent<EnemyState>().Die();
-			if (healthPoint == 0)
-			{
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-			}
-		}
-	}
+        if (healthPoint == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Application.Quit();
+        }
+    }
 
 }
