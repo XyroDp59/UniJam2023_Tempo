@@ -38,6 +38,8 @@ public class MineManager : MonoBehaviour
 
     public void Explode()
     {
+        GameObject go = Instantiate(explosion);
+        go.transform.position = transform.position;
         Destroy(gameObject);
         return;
     }

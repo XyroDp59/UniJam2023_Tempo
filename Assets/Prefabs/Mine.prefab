@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831452669135f747b542a5e9eaceb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 6835443591435492745, guid: 24821bdcdd160e84399b3c47180ce29f, type: 3}
   speed: 150
   active: 1
   knockback: 10
