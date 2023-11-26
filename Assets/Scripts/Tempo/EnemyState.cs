@@ -22,4 +22,9 @@ public class EnemyState : MonoBehaviour
 			
 		currentState = state;
 	}
+
+    private void OnDestroy()
+    {
+		SpawnManager.instance.EnemyList.Remove(this.gameObject);
+    }
 }

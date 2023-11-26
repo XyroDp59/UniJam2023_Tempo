@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager instance;
     public GameObject[] animalPrefabsArray;
     private GameObject animalSelected;
 
@@ -27,6 +28,13 @@ public class SpawnManager : MonoBehaviour
 	public int actualState=0;
 
 
+    void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(gameObject);    // Suppression d'une instance précédente (sécurité...sécurité...)
+
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()

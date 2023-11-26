@@ -5,6 +5,7 @@ public class MineManager : MonoBehaviour
     public float speed;
     private Rigidbody2D rb;
     public bool active = false;
+    public int knockback;
 
     private void Start()
     {
@@ -21,6 +22,12 @@ public class MineManager : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
             return;
+        }else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Vector2 awayDirection = collision.transform.position - this.transform.position;
+            awayDirection = awayDirection.normalized;
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(awayDirection * knockback, ForceMode2D.Impulse);
+
         }
 
         if(collision.gameObject.CompareTag("Wall"))
