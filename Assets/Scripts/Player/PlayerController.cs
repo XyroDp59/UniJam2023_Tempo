@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
@@ -190,14 +191,9 @@ public class PlayerController : MonoBehaviour
 			Destroy(other.gameObject);
 			if (healthPoint == 0)
 			{
-				GameOver();
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 			}
 		}
 	}
 
-
-	private void GameOver()
-	{
-		rb.isKinematic = true;
-	}
 }
