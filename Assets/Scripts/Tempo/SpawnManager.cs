@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] animalPrefabsArray;
     private GameObject animalSelected;
 
-    private float spawnRangeX = 13f;
+    private float spawnRangeX = 23f;
     private float spawnRangeZ = 7f;
     //public Camera cam;
 
