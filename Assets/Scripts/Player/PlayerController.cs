@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -12,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float doubleJumpForce = 7f;
     [SerializeField] private float dashSpeed = 10f;
     [SerializeField] private float dashDuration = 0.5f;
-
     private bool isGrounded;
     private bool canDoubleJump;
     private bool isDashing;
@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
 	private Animator animator;
 	private SpriteRenderer sprite;
 
-	
+	private int healthPoint;
+	private float immunityTimer;
+	[SerializeField] private float immunityTime = 1f;
 	
 	[SerializeField] private float coyoteTime = 0.05f;
     private float _coyoteTimer;
@@ -47,10 +49,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		sprite = GetComponent<SpriteRenderer>();
-		
+		healthPoint = 3;
 		jumpForce = Mathf.Sqrt(2 * rb.gravityScale * 9.81f * jumpHeight);
 		currentState = PLAYER_IDLE;
-
+		immunityTimer = 0f;
     }
 
     private void Awake()
@@ -74,6 +76,7 @@ public class PlayerController : MonoBehaviour
 		// On decremente les compteurs
 	    if (_jumpBufferTimer > -1) _jumpBufferTimer -= Time.deltaTime;
 	    if (_coyoteTimer > -1) _coyoteTimer -= Time.deltaTime;
+	    if (immunityTimer > -1) immunityTimer -= Time.deltaTime;
 	    
         // Handle player input
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -167,14 +170,34 @@ public class PlayerController : MonoBehaviour
 
         isDashing = false;
     }
-	
-	
-	private void changeAnimationState(string newState)
+
+
+    private void changeAnimationState(string newState)
     {
         if (currentState == newState) return;
         animator.Play(newState);
         currentState = newState;
     }
+	
+    
+
+	private void OnCollisionEnter2D(Collision2D other)
+	{
+		if (other.gameObject.CompareTag("Enemy") && immunityTimer < 0)
+		{
+			healthPoint -= 1;
+			immunityTimer = immunityTime;
+			Destroy(other.gameObject);
+			if (healthPoint == 0)
+			{
+				GameOver();
+			}
+		}
+	}
 
 
+	private void GameOver()
+	{
+		rb.isKinematic = true;
+	}
 }
