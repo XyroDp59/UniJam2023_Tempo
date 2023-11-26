@@ -16,6 +16,10 @@ public class TempoManager : MonoBehaviour
 
 	public float timeSurvived;
 	public int score;
+	
+	[SerializeField] private AudioClip soundAvant;
+	[SerializeField] private AudioClip soundApres;
+	[SerializeField] private float volume;
 
     //event listener -> activer les fcts de pleins d'objets	
 
@@ -32,11 +36,12 @@ public class TempoManager : MonoBehaviour
 
 
 		if(_timer <= previewSoundDuration && _shouldPlaySound){
-			//play sound
+			SoundManager.Instance.PlaySound(soundAvant, volume);
 			_shouldPlaySound = false;
 		}
 		if(_timer <= 0){
 			onTimeUp.Invoke();
+			SoundManager.Instance.PlaySound(soundApres, volume);
 			_shouldPlaySound = true;
 			_timer = duration;
 

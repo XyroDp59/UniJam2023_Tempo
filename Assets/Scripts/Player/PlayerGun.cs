@@ -9,6 +9,10 @@ public class PlayerGun : MonoBehaviour
     private Transform player;
     private Camera camera;
     [SerializeField] GameObject bulletPrefab;
+	
+	[SerializeField] private List<AudioClip> sound = new List<AudioClip>();
+	[SerializeField] private float volume;
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +28,7 @@ public class PlayerGun : MonoBehaviour
         mousePosition.z = 0;
         Vector3 currentGunDirection = (transform.position - player.transform.position).normalized;
         Vector3 shotDirection = (mousePosition - player.transform.position).normalized;
-        Debug.Log(shotDirection);
+        //Debug.Log(shotDirection);
         if (shotDirection.x > 0) transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = true;
         else transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = false;
         this.transform.up = shotDirection;
@@ -33,6 +37,7 @@ public class PlayerGun : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && rechargeTime >= fireSpeed)
         {
             Instantiate(bulletPrefab, this.transform.position + shotDirection, this.transform.rotation);
+			SoundManager.Instance.PlaySoundInList(sound, volume);
             rechargeTime = 0;
         }
     }

@@ -10,6 +10,8 @@ public class PlayerSword : MonoBehaviour
 	private GameObject swingObj;
 	private Animator animSwing;
     private bool swinging;
+	[SerializeField] private AudioClip sound;
+	[SerializeField] private float volume;
   
 	void Start(){
 		swingObj = gameObject.transform.GetChild(0).gameObject;
@@ -22,6 +24,7 @@ public class PlayerSword : MonoBehaviour
       
         if (Input.GetMouseButton(0) && rechargeTime >= attackSpeed)
         {
+			SoundManager.Instance.PlaySound(sound, volume);
             swingObj.SetActive(true);
             rechargeTime = 0;
             swinging = true;

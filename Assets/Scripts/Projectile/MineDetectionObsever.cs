@@ -6,6 +6,9 @@ using UnityEngine;
 public class MineDetectionObsever : MonoBehaviour
 {
 
+	[SerializeField] private AudioClip sound;
+	[SerializeField] private float volume;
+
     private CircleCollider2D colliderTrigger;
     private bool isTrigger = false;
     // Start is called before the first frame update
@@ -36,6 +39,7 @@ public class MineDetectionObsever : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         Collider2D[] lstBolosse = Physics2D.OverlapCircleAll(transform.position, colliderTrigger.radius,LayerMask.GetMask("Enemy"));
+		SoundManager.Instance.PlaySound(sound, volume);
         foreach (Collider2D item in lstBolosse)
         {
             Destroy(item.gameObject);
