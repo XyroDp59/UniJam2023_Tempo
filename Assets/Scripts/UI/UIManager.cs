@@ -58,7 +58,9 @@ public class UIManager : MonoBehaviour
             lastSecond = seconds;
 
         }
-
+		
+		PlayerPrefs.SetFloat("CurrentTimeMinutes",minutes);
+		PlayerPrefs.SetFloat("CurrentTimeSeconds",seconds);
         timerText.text = "Time\n" + string.Format("{0:0}:{1:00}", minutes, seconds);
 
         timeRemaining += Time.deltaTime;
