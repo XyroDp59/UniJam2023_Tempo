@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -409,6 +409,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time
 
+    n sec
+
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -418,8 +420,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190229
+  m_fontColor: {r: 0.5849056, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -436,8 +438,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -502,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 197}
+  m_AnchoredPosition: {x: 0, y: 181.8}
   m_SizeDelta: {x: 120.0546, y: 30.0137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &700265978
@@ -798,6 +800,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2561734321758895611, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
+      propertyPath: shaker
+      value: 
+      objectReference: {fileID: 1265129003}
     - target: {fileID: 2990365228089730716, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -810,6 +816,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4765990528940255201, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
+      propertyPath: shaker
+      value: 
+      objectReference: {fileID: 1265129003}
     - target: {fileID: 4765990528940255201, guid: f468dd1a7018ea346ab0cb31bd14edfb, type: 3}
       propertyPath: uiManager
       value: 
@@ -964,6 +974,7 @@ GameObject:
   - component: {fileID: 1265129002}
   - component: {fileID: 1265129001}
   - component: {fileID: 1265129000}
+  - component: {fileID: 1265129003}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -1038,13 +1049,51 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265128999}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -23.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1265129003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265128999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17151fba55d50449b5301128f949f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 0
+  start: 0
 --- !u!1 &1407157047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3736,7 +3785,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0.85882354, b: 0, a: 1}
+    m_NormalColor: {r: 1, g: 0.009995077, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3784,8 +3833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -304, y: 199}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchoredPosition: {x: -284.6, y: 192.8}
+  m_SizeDelta: {x: 158.5, y: 32.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1596238424
 PrefabInstance:
@@ -4217,11 +4266,11 @@ SceneRoots:
   - {fileID: 1711932162}
   - {fileID: 331371080}
   - {fileID: 802927084}
-  - {fileID: 1265129002}
   - {fileID: 430973578}
   - {fileID: 931866662}
   - {fileID: 1980542539}
   - {fileID: 66559385}
+  - {fileID: 1265129002}
   - {fileID: 1834091325}
   - {fileID: 700265983}
   - {fileID: 1596238424}

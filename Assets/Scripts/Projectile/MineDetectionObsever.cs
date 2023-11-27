@@ -6,6 +6,8 @@ using UnityEngine;
 public class MineDetectionObsever : MonoBehaviour
 {
 
+	private Screenshake shaker;
+
 	[SerializeField] private AudioClip sound;
 	[SerializeField] private float volume;
 
@@ -15,6 +17,7 @@ public class MineDetectionObsever : MonoBehaviour
     void Start()
     {
         colliderTrigger = GetComponent<CircleCollider2D>();
+		shaker = Camera.main.gameObject.GetComponent<Screenshake>();
     }
 
     private void OnDrawGizmos()
@@ -38,6 +41,8 @@ public class MineDetectionObsever : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Collider2D[] lstBolosse = Physics2D.OverlapCircleAll(transform.position, colliderTrigger.radius,LayerMask.GetMask("Enemy"));
 		SoundManager.Instance.PlaySound(sound, volume);
+		shaker.duration = 0.1f;
+		shaker.start = true;
         foreach (Collider2D item in lstBolosse)
         {
             item.GetComponent<EnemyState>().Die();

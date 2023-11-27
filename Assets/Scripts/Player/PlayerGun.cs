@@ -10,6 +10,9 @@ public class PlayerGun : MonoBehaviour
     private Camera camera;
     [SerializeField] GameObject bulletPrefab;
 	
+	
+	[SerializeField] private Screenshake shaker;
+
 	[SerializeField] private List<AudioClip> sound = new List<AudioClip>();
 	[SerializeField] private float volume;
 	
@@ -37,6 +40,8 @@ public class PlayerGun : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && rechargeTime >= fireSpeed)
         {
             Instantiate(bulletPrefab, this.transform.position + shotDirection, this.transform.rotation);
+			//shaker.duration = 0.01f;
+			//shaker.start = true;
 			SoundManager.Instance.PlaySoundInList(sound, volume);
             rechargeTime = 0;
         }

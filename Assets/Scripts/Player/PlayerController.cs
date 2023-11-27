@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<AudioClip> jumpSoundList = new List<AudioClip>();
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private float volume = 8f;
+	
+	[SerializeField] private Screenshake shaker;
+
 
     private UIManager uIManager;
 
@@ -195,6 +198,8 @@ public class PlayerController : MonoBehaviour
         healthPoint -= 1;
         immunityTimer = immunityTime;
         SoundManager.Instance.PlaySound(hitSound, volume);
+		shaker.duration = 0.05f;
+		shaker.start = true;
 
         if (healthPoint == 0)
         {
