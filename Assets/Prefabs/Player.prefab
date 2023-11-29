@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpeed: 2
   bulletPrefab: {fileID: 8063756402958971116, guid: 8d838a40d6ad9864c8308e08f4859454, type: 3}
+  shaker: {fileID: 0}
   sound:
   - {fileID: 8300000, guid: e9a707600fab2a24fab317402e416b05, type: 3}
   volume: 8
@@ -364,6 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSpeed: 0.4
   bulletPrefab: {fileID: 4429928292521031546, guid: 60ba615910e2f4838af456e087d9501c, type: 3}
+  shaker: {fileID: 0}
   sound:
   - {fileID: 8300000, guid: fddf7bd295d478546b9427db5fc7e9cf, type: 3}
   - {fileID: 8300000, guid: 0e2327d18ec3e764bb1273a6c03c4172, type: 3}
@@ -889,6 +891,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eedc32f78713ed941aa75bbca9d504f0, type: 3}
   hitSound: {fileID: 8300000, guid: 10c263df9bdb71e49b1791d80d989c0d, type: 3}
   volume: 50
+  shaker: {fileID: 0}
 --- !u!50 &3157680229132218571
 Rigidbody2D:
   serializedVersion: 4

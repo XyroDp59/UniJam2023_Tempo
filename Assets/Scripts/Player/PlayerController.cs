@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
 	    if (_jumpBufferTimer > -1) _jumpBufferTimer -= Time.deltaTime;
 	    if (_coyoteTimer > -1) _coyoteTimer -= Time.deltaTime;
 	    if (immunityTimer > -1) immunityTimer -= Time.deltaTime;
+		else if (immunityTimer <= 0) sprite.color = Color.white;
+
 	    
         // Handle player input
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -195,11 +197,14 @@ public class PlayerController : MonoBehaviour
 
 	public void takeDamage()
 	{
-        healthPoint -= 1;
-        immunityTimer = immunityTime;
-        SoundManager.Instance.PlaySound(hitSound, volume);
-		shaker.duration = 0.05f;
-		shaker.start = true;
+		if(immunityTimer <= -1) {
+			healthPoint -= 1;
+			immunityTimer = immunityTime;
+			SoundManager.Instance.PlaySound(hitSound, volume);
+			sprite.color = Color.red;
+			shaker.duration = 0.05f;
+			shaker.start = true;
+		}
 
         if (healthPoint == 0)
         {
