@@ -10,6 +10,7 @@ public class DegatMec : MonoBehaviour
         {
             PlayerController.instance.takeDamage();
             Debug.Log("Tappe");
+			collision.gameObject.GetComponent<EnemyState>().Die();
         }
     }
 }
